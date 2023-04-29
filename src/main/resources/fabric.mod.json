@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "not-enough-arrows",
+  "version": "${version}",
+  "name": "not-enough-arrows",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/dthusian/not-enough-arrows"
+  },
+  "license": "MIT",
+  "icon": "assets/not-enough-arrows/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "dev.wateralt.mc.notenougharrows.NotEnoughArrows"
+    ]
+  },
+  "mixins": [
+    "not-enough-arrows.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}

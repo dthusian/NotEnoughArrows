@@ -43,6 +43,7 @@ public class FlashArrow extends Arrow {
     entityList.forEach(player -> {
       player.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 5 * 20, 1, false, false));
     });
+    me.kill();
   }
 
   @Override

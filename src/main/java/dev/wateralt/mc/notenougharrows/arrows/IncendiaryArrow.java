@@ -35,6 +35,7 @@ public class IncendiaryArrow extends Arrow {
     if(state.isReplaceable()) {
       me.getWorld().setBlockState(me.getBlockPos(), Blocks.LAVA.getDefaultState());
     }
+    me.kill();
   }
 
   @Override

@@ -37,19 +37,6 @@ public class EnderArrow extends Arrow {
     Entity owner = me.getOwner();
     if(owner == null) return;
     if(owner.getEntityWorld() != me.getWorld()) return;
-    
-    for(int i = 0; i < 32; ++i) {
-      owner.getEntityWorld().addParticle(
-        ParticleTypes.PORTAL,
-        me.getX(),
-        me.getY() + me.getWorld().random.nextDouble() * 2.0,
-        me.getZ(),
-        me.getWorld().random.nextGaussian(),
-        0.0,
-        me.getWorld().random.nextGaussian()
-      );
-    }
-    
     if(!(me.getWorld() instanceof ServerWorld serverWorld)) return;
     owner.teleportTo(new TeleportTarget(
       serverWorld,
@@ -59,6 +46,7 @@ public class EnderArrow extends Arrow {
       me.getOwner().getPitch(),
       TeleportTarget.NO_OP
     ));
+    me.kill();
   }
 
   @Override

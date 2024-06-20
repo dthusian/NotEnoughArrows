@@ -20,11 +20,13 @@ public class GrapplingArrow extends Arrow {
     ArrowEntity hook = tracker.getTracking(entity);
     if (!hook.isAlive()) {
       tracker.untrack(entity);
+      entity.kill();
       return;
     }
     Vec3d diff = hook.getPos().subtract(entity.getPos());
     if (diff.length() > GRAPPLE_RANGE || diff.length() < 2 || ((PersistentProjectileEntityAccessor) hook).getInGroundTime() > 20 * 5) {
       tracker.untrack(entity);
+      entity.kill();
       return;
     }
     entity.addVelocity(diff.normalize().multiply(GRAPPLE_STRENGTH));

@@ -1,11 +1,10 @@
 package dev.wateralt.mc.notenougharrows;
 
-import dev.wateralt.mc.notenougharrows.arrows.ExplosiveArrow;
-import dev.wateralt.mc.notenougharrows.arrows.GrapplingArrow;
-import dev.wateralt.mc.notenougharrows.arrows.LevitationArrow;
-import dev.wateralt.mc.notenougharrows.arrows.NauseaArrow;
+import dev.wateralt.mc.notenougharrows.arrows.*;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.Item;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +29,8 @@ public class NotEnoughArrows implements ModInitializer {
         addArrow(new LevitationArrow());
         addArrow(new NauseaArrow());
         addArrow(new GrapplingArrow());
+        addArrow(new IncendiaryArrow());
+        addArrow(new FlashArrow());
     }
     private void addArrow(Arrow arrow) {
         arrowsByColor.put(arrow.color(), arrow);

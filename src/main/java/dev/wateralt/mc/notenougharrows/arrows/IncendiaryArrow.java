@@ -1,25 +1,29 @@
 package dev.wateralt.mc.notenougharrows.arrows;
 
 import dev.wateralt.mc.notenougharrows.Arrow;
-import net.minecraft.entity.Entity;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.world.World;
 
-public class ExplosiveArrow extends Arrow {
+import java.util.HashMap;
+
+public class IncendiaryArrow extends Arrow {
     @Override
     public String name() {
-        return "Explosive Arrow";
+        return "Incendiary Arrow";
     }
 
     @Override
-    public String lore() { return "{\"text\":\"Explodes on impact\",\"color\":\"gold\",\"italic\":false}"; }
+    public String lore() {
+        return "Spews hot fluids wherever it hits";
+    }
 
     @Override
     public int color() {
-        return 0x4f1d00;
+        return 0xa83632;
     }
 
     @Override
@@ -29,12 +33,14 @@ public class ExplosiveArrow extends Arrow {
 
     @Override
     public void onBlockHit(ArrowEntity me) {
-        me.getWorld().createExplosion(me, me.getX(), me.getY(), me.getZ(), 4.0f, World.ExplosionSourceType.TNT);
-        me.kill();
+        BlockState state = me.getBlockStateAtPos();
+        if(state.isOf(Blocks.AIR) || state.isOf(Blocks.CAVE_AIR) || state.isOf(Blocks.VOID_AIR)) {
+            me.getWorld().setBlockState(me.getBlockPos(), Blocks.LAVA.getDefaultState());
+        }
     }
 
     @Override
     public FletchingRecipe fletchingRecipe() {
-        return new FletchingRecipe(new ItemStack(Items.TNT, 8), 1);
+        return new FletchingRecipe(new ItemStack(Items.LAVA_BUCKET), 1);
     }
 }

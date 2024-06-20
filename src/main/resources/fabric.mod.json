@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "id": "not-enough-arrows",
+  "id": "not-enough-arrows-121",
   "version": "${version}",
-  "name": "not-enough-arrows",
+  "name": "not-enough-arrows-121",
   "description": "",
   "authors": [],
   "contact": {
-    "repo": "https://github.com/dthusian/not-enough-arrows"
+    "repo": "https://github.com/dthusian/not-enough-arrows-121"
   },
   "license": "MIT",
   "icon": "assets/not-enough-arrows/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "dev.wateralt.mc.notenougharrows.NotEnoughArrows"

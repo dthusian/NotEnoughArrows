@@ -11,8 +11,8 @@ import java.util.function.BooleanSupplier;
 
 @Mixin(MinecraftServer.class)
 public class ServerTickMixin {
-    @Inject(at = @At("HEAD"), method = "tick")
-    public void tick(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
-        NotEnoughArrows.trackerList.forEach(v -> v.tick((MinecraftServer) (Object) this));
-    }
+  @Inject(at = @At("HEAD"), method = "tick")
+  public void tick(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
+    NotEnoughArrows.trackerList.forEach(v -> v.tick((MinecraftServer) (Object) this));
+  }
 }

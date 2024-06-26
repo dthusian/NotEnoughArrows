@@ -7,6 +7,7 @@ import dev.wateralt.mc.notenougharrows.mixin.PersistentProjectileEntityAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.Vec3d;
@@ -20,13 +21,11 @@ public class GrapplingArrow extends Arrow {
     ArrowEntity hook = tracker.getTracking(entity);
     if (!hook.isAlive()) {
       tracker.untrack(entity);
-      entity.kill();
       return;
     }
     Vec3d diff = hook.getPos().subtract(entity.getPos());
     if (diff.length() > GRAPPLE_RANGE || diff.length() < 2 || ((PersistentProjectileEntityAccessor) hook).getInGroundTime() > 20 * 5) {
       tracker.untrack(entity);
-      entity.kill();
       return;
     }
     entity.addVelocity(diff.normalize().multiply(GRAPPLE_STRENGTH));
@@ -66,6 +65,7 @@ public class GrapplingArrow extends Arrow {
     if (owner == null) return;
     Vec3d diff = me.getPos().subtract(owner.getPos());
     if (diff.length() > GRAPPLE_RANGE) return;
+    ((PersistentProjectileEntityAccessor) me).setPickupType(PersistentProjectileEntity.PickupPermission.DISALLOWED);
     tracker.track(me.getOwner(), me);
   }
 

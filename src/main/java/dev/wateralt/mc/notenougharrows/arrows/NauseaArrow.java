@@ -35,6 +35,6 @@ public class NauseaArrow extends Arrow {
 
   @Override
   public FletchingRecipe fletchingRecipe() {
-    return new FletchingRecipe(new ItemStack(Items.PUFFERFISH), 8);
+    return new FletchingRecipe(new ItemStack(Items.PUFFERFISH), 16);
   }
 }

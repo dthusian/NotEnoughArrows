@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
 public class WindArrow extends Arrow {
+  private static final double WIND_STRENGTH = 1.5;
 
   @Override
   public String name() {
@@ -25,7 +26,7 @@ public class WindArrow extends Arrow {
 
   @Override
   public void onEntityHit(ArrowEntity me, LivingEntity entity) {
-    entity.addVelocity(me.getVelocity().multiply(1.5));
+    entity.addVelocity(me.getVelocity().multiply(WIND_STRENGTH));
     entity.velocityModified = true;
   }
 

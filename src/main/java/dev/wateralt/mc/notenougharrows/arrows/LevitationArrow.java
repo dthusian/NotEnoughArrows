@@ -36,6 +36,6 @@ public class LevitationArrow extends Arrow {
 
   @Override
   public FletchingRecipe fletchingRecipe() {
-    return new FletchingRecipe(new ItemStack(Items.SHULKER_SHELL), 1);
+    return new FletchingRecipe(new ItemStack(Items.SHULKER_SHELL), 16);
   }
 }

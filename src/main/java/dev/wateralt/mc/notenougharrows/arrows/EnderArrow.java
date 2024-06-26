@@ -19,7 +19,7 @@ public class EnderArrow extends Arrow {
 
   @Override
   public String lore() {
-    return "Teleports you to the arrow's location";
+    return "Swaps you and the arrow's target";
   }
 
   @Override
@@ -28,29 +28,41 @@ public class EnderArrow extends Arrow {
   }
 
   @Override
-  public void onEntityHit(ArrowEntity me, LivingEntity entity) {
-    onBlockHit(me);
+  public void onEntityHit(ArrowEntity me, LivingEntity target) {
+    Entity owner = me.getOwner();
+    if(owner == null) return;
+    if(owner.getEntityWorld() != target.getWorld()) return;
+    if(!(me.getWorld() instanceof ServerWorld serverWorld)) return;
+    
+    Vec3d ownerPos = owner.getPos();
+    Vec3d ownerVel = owner.getVelocity();
+    float ownerYaw = owner.getYaw();
+    float ownerPitch = owner.getPitch();
+    Vec3d targetPos = target.getPos();
+    Vec3d targetVel = target.getVelocity();
+    float targetYaw = target.getYaw();
+    float targetPitch = target.getPitch();
+    owner.teleportTo(new TeleportTarget(
+      serverWorld,
+      targetPos, targetVel,
+      targetYaw, targetPitch,
+      TeleportTarget.NO_OP
+    ));
+    target.teleportTo(new TeleportTarget(
+      serverWorld,
+      ownerPos, ownerVel,
+      ownerYaw, ownerPitch,
+      TeleportTarget.NO_OP
+    ));
   }
 
   @Override
   public void onBlockHit(ArrowEntity me) {
-    Entity owner = me.getOwner();
-    if(owner == null) return;
-    if(owner.getEntityWorld() != me.getWorld()) return;
-    if(!(me.getWorld() instanceof ServerWorld serverWorld)) return;
-    owner.teleportTo(new TeleportTarget(
-      serverWorld,
-      me.getPos(),
-      Vec3d.ZERO,
-      me.getOwner().getYaw(),
-      me.getOwner().getPitch(),
-      TeleportTarget.NO_OP
-    ));
-    me.kill();
+    
   }
 
   @Override
   public FletchingRecipe fletchingRecipe() {
-    return new FletchingRecipe(new ItemStack(Items.ENDER_PEARL), 1);
+    return new FletchingRecipe(new ItemStack(Items.ENDER_PEARL, 2), 1);
   }
 }

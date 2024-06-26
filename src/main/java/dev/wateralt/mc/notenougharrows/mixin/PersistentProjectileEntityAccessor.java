@@ -11,4 +11,7 @@ public interface PersistentProjectileEntityAccessor {
 
   @Accessor
   boolean getInGround();
+  
+  @Accessor("pickupType")
+  void setPickupType(PersistentProjectileEntity.PickupPermission pickupType);
 }

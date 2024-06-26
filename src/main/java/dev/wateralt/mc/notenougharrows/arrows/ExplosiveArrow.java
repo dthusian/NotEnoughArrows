@@ -36,6 +36,6 @@ public class ExplosiveArrow extends Arrow {
 
   @Override
   public FletchingRecipe fletchingRecipe() {
-    return new FletchingRecipe(new ItemStack(Items.TNT, 1), 1);
+    return new FletchingRecipe(new ItemStack(Items.TNT, 16), 1);
   }
 }

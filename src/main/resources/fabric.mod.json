@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "not-enough-arrows-121",
+  "id": "not-enough-arrows",
   "version": "${version}",
-  "name": "not-enough-arrows-121",
+  "name": "not-enough-arrows",
   "description": "",
   "authors": [],
   "contact": {
-    "repo": "https://github.com/dthusian/not-enough-arrows-121"
+    "repo": "https://github.com/dthusian/not-enough-arrows"
   },
   "license": "MIT",
   "icon": "assets/not-enough-arrows/icon.png",

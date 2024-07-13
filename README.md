@@ -10,9 +10,9 @@ onto a fletching table.
 
 ## Explosive Arrow
 
-Crafted with: 1 Arrow + 16 TNT
+Crafted with: 1 Arrow + 8 TNT
 
-Explodes where the arrow lands. Explosion is power 4.0, same as standard TNT.
+Spawns primed TNT with 2 second fuse where the arrow lands.
 
 ## Grappling Arrow
 

@@ -2,10 +2,13 @@ package dev.wateralt.mc.notenougharrows.arrows;
 
 import dev.wateralt.mc.notenougharrows.Arrow;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
+import net.minecraft.world.explosion.ExplosionBehavior;
 
 public class ExplosiveArrow extends Arrow {
   @Override
@@ -30,12 +33,20 @@ public class ExplosiveArrow extends Arrow {
 
   @Override
   public void onBlockHit(ArrowEntity me) {
-    me.getWorld().createExplosion(me, me.getX(), me.getY(), me.getZ(), 4.0f, World.ExplosionSourceType.TNT);
+    LivingEntity owner = null;
+    if(me.getOwner() instanceof LivingEntity meOwner) {
+      owner = meOwner;
+    }
+    TntEntity tnt = new TntEntity(me.getWorld(), me.getX(), me.getY(), me.getZ(), owner);
+    tnt.setFuse(40);
+    tnt.setNoGravity(true);
+    tnt.setVelocity(0, 0, 0);
+    me.getWorld().spawnEntity(tnt);
     me.kill();
   }
 
   @Override
   public FletchingRecipe fletchingRecipe() {
-    return new FletchingRecipe(new ItemStack(Items.TNT, 16), 1);
+    return new FletchingRecipe(new ItemStack(Items.TNT, 8), 1);
   }
 }

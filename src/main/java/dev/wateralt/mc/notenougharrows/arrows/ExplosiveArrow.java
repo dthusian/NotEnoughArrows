@@ -6,6 +6,7 @@ import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import net.minecraft.world.explosion.ExplosionBehavior;
@@ -42,7 +43,7 @@ public class ExplosiveArrow extends Arrow {
     tnt.setNoGravity(true);
     tnt.setVelocity(0, 0, 0);
     me.getWorld().spawnEntity(tnt);
-    me.kill();
+    me.kill((ServerWorld) me.getWorld());
   }
 
   @Override

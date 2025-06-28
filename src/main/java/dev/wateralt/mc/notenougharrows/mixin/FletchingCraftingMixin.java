@@ -68,7 +68,8 @@ public abstract class FletchingCraftingMixin {
             .add(DataComponentTypes.POTION_CONTENTS, new PotionContentsComponent(
               Optional.empty(),
               Optional.of(0x55000000 | arrowType.color()),
-              List.of()
+              List.of(),
+              Optional.empty()
             ))
             .add(DataComponentTypes.ITEM_NAME, Text.literal(arrowType.name()))
             .add(DataComponentTypes.LORE, new LoreComponent(

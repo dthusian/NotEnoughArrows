@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
 
 public class IncendiaryArrow extends Arrow {
   @Override
@@ -35,7 +36,7 @@ public class IncendiaryArrow extends Arrow {
     if(state.isReplaceable()) {
       me.getWorld().setBlockState(me.getBlockPos(), Blocks.LAVA.getDefaultState());
     }
-    me.kill();
+    me.kill((ServerWorld) me.getWorld());
   }
 
   @Override

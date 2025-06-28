@@ -15,7 +15,7 @@ public class ArrowEntityMixin {
   public void tick(CallbackInfo ci) {
     ArrowEntity that = (ArrowEntity) (Object) this;
     PersistentProjectileEntityAccessor that2 = (PersistentProjectileEntityAccessor) that;
-    if (that2.getInGround() && that2.getInGroundTime() == 1) {
+    if (that2.isInGround() && that2.getInGroundTime() == 1) {
       if (that.getColor() >> 24 == 0x55) {
         Arrow arrow = NotEnoughArrows.arrowsByColor.get(that.getColor() & 0xffffff);
         if (arrow == null) {

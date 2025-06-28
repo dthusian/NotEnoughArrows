@@ -31,7 +31,7 @@ public class EnderArrow extends Arrow {
   public void onEntityHit(ArrowEntity me, LivingEntity target) {
     Entity owner = me.getOwner();
     if(owner == null) return;
-    if(owner.getEntityWorld() != target.getWorld()) return;
+    if(owner.getWorld() != target.getWorld()) return;
     if(!(me.getWorld() instanceof ServerWorld serverWorld)) return;
     
     Vec3d ownerPos = owner.getPos();

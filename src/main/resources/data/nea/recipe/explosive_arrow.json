@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:arrow",
+    "minecraft:tnt",
+    "minecraft:tnt",
+    "minecraft:tnt",
+    "minecraft:tnt"
+  ],
+  "result": {
+    "id": "minecraft:tipped_arrow",
+    "count": 1,
+    "components": {
+      "minecraft:custom_data": {
+        "not_enough_arrows": "explosive"
+      },
+      "minecraft:potion_contents": {
+        "custom_color": 5184768,
+        "custom_effects": [],
+        "custom_name": "Explosive"
+      },
+      "minecraft:lore": [
+        { "text": "Explodes on impact" }
+      ]
+    }
+  }
+}

@@ -13,12 +13,14 @@ import java.util.Map;
 
 public class NotEnoughArrows implements ModInitializer {
   public static Map<Integer, Arrow> arrowsByColor;
+  public static Map<String, Arrow> arrowsById;
   public static Map<Item, Arrow> arrowsByIngredient;
   public static List<EntityTracker<?>> trackerList;
   public static Logger logger = LoggerFactory.getLogger(NotEnoughArrows.class);
 
   public NotEnoughArrows() {
     arrowsByColor = new HashMap<>();
+    arrowsById = new HashMap<>();
     arrowsByIngredient = new HashMap<>();
     trackerList = new ArrayList<>();
   }
@@ -33,6 +35,8 @@ public class NotEnoughArrows implements ModInitializer {
     addArrow(new FlashArrow());
     addArrow(new EnderArrow());
     addArrow(new WindArrow());
+    
+    arrowsById.put("explosive", new ExplosiveArrow());
   }
 
   private void addArrow(Arrow arrow) {

@@ -32,7 +32,7 @@ public class EntityTracker<T> {
   public void tick(MinecraftServer server) {
     server.getWorlds().forEach(world -> {
       world.getEntitiesByType(TypeFilter.instanceOf(Entity.class), entity -> trackedEntities.containsKey(entity.getUuid()))
-        .forEach(entityTick::accept);
+        .forEach(entityTick);
     });
   }
 }

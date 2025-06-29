@@ -11,7 +11,7 @@ public interface PersistentProjectileEntityAccessor {
   int getInGroundTime();
 
   @Invoker("isInGround")
-  boolean isInGround();
+  boolean invokerIsInGround();
   
   @Accessor("pickupType")
   void setPickupType(PersistentProjectileEntity.PickupPermission pickupType);
